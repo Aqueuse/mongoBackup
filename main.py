@@ -38,13 +38,14 @@ def json_to_mongo(my_collection, my_database):
     database = client[my_database]
     collection_mongo = database[my_collection]
 
-    # read json
     json_file = open('restore/'+my_collection, 'r')
     line = json_file.readline()
 
-    # json to dict
     collection_dict = json.loads(line)
     json_file.close()
+
+    cured_collection = restore_pk(collection_dict)
+    print(cured_collection)
 
     # if collection exist, backup the old before and drop
     print("save the old data and clean the collection")
@@ -54,5 +55,14 @@ def json_to_mongo(my_collection, my_database):
     collection_mongo.insert_many(collection_dict)
 
 
-# mongo_to_json('streamer_site_streamer', 'streamer', 'backup')
-json_to_mongo('streamer_site_streamer', 'streamer')
+# get a pk to items in the collection
+def restore_pk(my_collection_dict):
+    pk = 0
+    for element in my_collection_dict:
+        element['pk'] = pk
+        pk = pk + 1
+    return my_collection_dict
+
+
+# mongo_to_json('articles', 'oursAgile', 'ours')
+json_to_mongo('articles', 'oursAgile')
