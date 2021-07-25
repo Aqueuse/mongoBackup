@@ -41,7 +41,6 @@ def cli_parse():
                 and len(collection) > 0 \
                 and file_arg == "-f" \
                 and filename == valid_filename(filename):
-            print("pouet")
             json_to_mongo(collection, database, filename)
         else:
             print(help_message)
