@@ -3,8 +3,8 @@ from pathvalidate import sanitize_filename, validate_filename, ValidationError
 from mongo import mongo_to_json, json_to_mongo
 
 help_message = "Save and restore locales MongoDB databases \n\nusage : \n \
-      mongoBackup --save    -d \"database\" -c \"collection\" -f filename.json \n \
-      mongoBackup --restore -d \"database\" -c \"collection\" -f filename.json \n"
+      mongoBackup --save    -d \"database\" -c \"collection\" -f \"filename.json\" \n \
+      mongoBackup --restore -d \"database\" -c \"collection\" -f \"filename.json\" \n"
 
 # usage :
 # mongoBackup --save -d "database" -c "collection" -f "filename.json"
