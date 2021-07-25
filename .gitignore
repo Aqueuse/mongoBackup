@@ -1,9 +1,2 @@
 .idea/
-backup/*
-!backup/.gitkeep
-
-restore/*
-!restore/.gitkeep
-
-old/*
-!old/.gitkeep
+*.json
